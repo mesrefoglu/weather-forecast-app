@@ -2,7 +2,8 @@ import "./App.css";
 import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import TopButtons from "./components/TopButtons";
 import Inputs from "./components/Inputs";
-import TimeAndLocation from "./components/TimeAndLocation";
+import LocationAndTime from "./components/LocationAndTime";
+import WeatherNow from "./components/WeatherNow";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <div className="mx-auto max-w-screen-md pt">
         <TopButtons />
         <Inputs />
-        <TimeAndLocation />
+        <LocationAndTime />
       </div>
     </div>
   );
