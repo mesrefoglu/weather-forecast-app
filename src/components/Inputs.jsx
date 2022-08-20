@@ -19,11 +19,11 @@ function Inputs() {
       <div className="flex flex-row items-center justify-center ml-8">
         <button className="flex flex-row items-center justify-center transition ease-out hover:scale-125">
           <div name="metric" className="text-xl text-white font-light">
-            °C
+            &deg;C
           </div>
           <p className="text-xl text-white mx-3">/</p>
           <div name="imperial" className="text-xl text-white font-light">
-            °F
+            &deg;F
           </div>
         </button>
       </div>
