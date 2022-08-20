@@ -16,7 +16,7 @@ function Inputs() {
         />
       </div>
 
-      <div className="flex flex-row w-1/4 items-center justify-center space-x-4">
+      <div className="flex flex-row items-center justify-center ml-6">
         <button className="flex flex-row items-center justify-center transition ease-out hover:scale-125">
           <div name="metric" className="text-xl text-white font-light">
             °C
