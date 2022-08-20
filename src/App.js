@@ -1,18 +1,20 @@
 import "./App.css";
-import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import TopButtons from "./components/TopButtons";
 import Inputs from "./components/Inputs";
 import LocationAndTime from "./components/LocationAndTime";
 import WeatherInfo from "./components/WeatherInfo";
+import Forecast from "./components/Forecast";
 
 function App() {
   return (
-    <div className="mx-auto max-w-full py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+    <div className="py-5 px-32 min-h-screen max-h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="mx-auto max-w-screen-md pt">
         <TopButtons />
         <Inputs />
         <LocationAndTime />
         <WeatherInfo />
+        <Forecast title="hourly forecast" />
+        <Forecast title="daily forecast" />
       </div>
     </div>
   );

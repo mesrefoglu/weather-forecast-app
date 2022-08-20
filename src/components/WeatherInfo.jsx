@@ -49,13 +49,13 @@ function WeatherInfo() {
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilSun />
             <p className="font-light">
-              Rise: <span className="font-medium ml-1">06:45 am</span>
+              Rise: <span className="font-medium ml-1">06:45 AM</span>
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilSunset />
             <p className="font-light">
-              Set: <span className="font-medium ml-1">08:45 pm</span>
+              Set: <span className="font-medium ml-1">08:45 PM</span>
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
