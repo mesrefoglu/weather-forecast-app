@@ -29,7 +29,7 @@ function TopButtons() {
       {cities.map((city) => (
         <button
           key={city.id}
-          className="text-white text-lg font-medium transition ease-out hover:scale-110"
+          className="text-white w-32 text-lg font-medium transition ease-out hover:scale-110"
         >
           {city.title}
         </button>
