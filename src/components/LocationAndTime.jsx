@@ -6,7 +6,7 @@ function LocationAndTime({ weather: { timezone, city, country } }) {
     <div>
       <div className="flex items-center justify-center my-6">
         <p className="text-white text-3xl font-medium">
-          {`${city}`}, {`${country}`}
+          {city}, {country}
         </p>
       </div>
       <div className="flex flex-row items-center justify-center my-6">

@@ -8,7 +8,7 @@ import getAllWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [city] = useState("berlin");
+  const [city] = useState("toronto");
   const [units] = useState("metric");
   const [weather, setWeather] = useState(null);
 
