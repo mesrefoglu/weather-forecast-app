@@ -1,6 +1,8 @@
 import React from "react";
+import { DateTime } from "luxon";
+import { iconUrlFromCode } from "../services/weatherService";
 
-function ForecastHourly() {
+function ForecastHourly({ weather: { hourly } }) {
   return (
     <div>
       <div className="flex items-center justify-start mt-10">
@@ -8,69 +10,22 @@ function ForecastHourly() {
       </div>
       <hr className="my-4" />
       <div className="flex flex-row items-center justify-between text-white">
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">5:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">6:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">7:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">8:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">9:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">9:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
+        {hourly.map((hour) => (
+          <div
+            key={hour.dt}
+            className="flex flex-col items-center justify-center"
+          >
+            <p className="font-light text-sm">
+              {DateTime.fromSeconds(hour.dt).toFormat("hh:mm a")}
+            </p>
+            <img
+              src={iconUrlFromCode(hour.icon)}
+              className="w-12 my-1"
+              alt=""
+            />
+            <p className="font-medium">{hour.temp.toFixed()}&deg;</p>
+          </div>
+        ))}
       </div>
     </div>
   );
