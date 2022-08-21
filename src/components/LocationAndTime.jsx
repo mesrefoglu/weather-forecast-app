@@ -10,7 +10,7 @@ function LocationAndTime({ weather: { dt, timezone, city, country } }) {
           {city}, {country}
         </p>
       </div>
-      <div className="flex flex-row items-center justify-center my-6">
+      <div className="flex flex-row items-center justify-center my-2">
         <p className="text-white text-xl font-extralight mx-3">
           {getDateTime(
             DateTime.utc().toSeconds(),

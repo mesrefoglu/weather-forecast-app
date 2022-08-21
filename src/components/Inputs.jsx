@@ -3,7 +3,7 @@ import { UilMapMarkerAlt } from "@iconscout/react-unicons";
 
 function Inputs() {
   return (
-    <div className="flex flex-row justify-center pt-2 my-10">
+    <div className="flex flex-row justify-center pt-2 my-3">
       <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
         <input
           type="text"

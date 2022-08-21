@@ -1,11 +1,10 @@
 import React from "react";
-import { DateTime } from "luxon";
 import { getDateTime, iconUrlFromCode } from "../services/weatherService";
 
 function ForecastHourly({ weather: { hourly, timezone } }) {
   return (
     <div>
-      <div className="flex items-center justify-start mt-10">
+      <div className="flex items-center justify-start mt-5">
         <p className="text-white font-medium uppercase">HOURLY FORECAST</p>
       </div>
       <hr className="my-4" />

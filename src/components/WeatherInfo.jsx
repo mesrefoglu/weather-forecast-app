@@ -27,12 +27,14 @@ function WeatherInfo({
 }) {
   return (
     <div>
-      <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>{main}</p>
-      </div>
       <div className="flex items-center justify-center">
-        <div className="flex flex-row items-center justify-between w-11/12 text-white py-3">
-          <img src={iconUrlFromCode(icon)} alt="sun" className="w-20 mx-9" />
+        <div className="flex flex-row items-center justify-between w-11/12 text-white py-1">
+          <div className="flex flex-row w-44 justify-between">
+            <img src={iconUrlFromCode(icon)} alt="sun" />
+            <div className="flex items-center justify-center text-xl text-cyan-300">
+              <p>{main}</p>
+            </div>
+          </div>
           <p className="text-5xl">{temp.toFixed()}&deg;</p>
           <div className="flex flex-col space-y-2 w-36">
             <div className="flex font-light text-sm items-center justify-center">
@@ -56,7 +58,7 @@ function WeatherInfo({
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div className="flex flex-row items-center justify-between w-5/6 ml-9 text-white text-sm py-3">
+        <div className="flex flex-row items-center justify-between w-5/6 text-white text-sm">
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilSun />
             <p className="font-light">

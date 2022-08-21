@@ -4,7 +4,7 @@ import { getDateTime, iconUrlFromCode } from "../services/weatherService";
 function ForecastDaily({ weather: { daily, timezone } }) {
   return (
     <div>
-      <div className="flex items-center justify-start mt-10">
+      <div className="flex items-center justify-start mt-5">
         <p className="text-white font-medium">DAILY FORECAST</p>
       </div>
       <hr className="my-4" />
