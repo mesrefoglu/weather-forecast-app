@@ -62,6 +62,15 @@ function Forecast({ title }) {
           />
           <p className="font-medium">20&deg;</p>
         </div>
+        <div className="flex flex-col items-center justify-center">
+          <p className="font-light text-sm">9:00 PM</p>
+          <img
+            src="http://openweathermap.org/img/wn/01d@2x.png"
+            className="w-12 my-1"
+            alt=""
+          />
+          <p className="font-medium">20&deg;</p>
+        </div>
       </div>
     </div>
   );

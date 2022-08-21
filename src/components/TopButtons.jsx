@@ -12,7 +12,7 @@ function TopButtons() {
     },
     {
       id: 3,
-      title: "Sydney",
+      title: "Istanbul",
     },
     {
       id: 4,
