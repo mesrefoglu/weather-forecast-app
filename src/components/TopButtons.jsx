@@ -1,6 +1,6 @@
 import React from "react";
 
-function TopButtons() {
+function TopButtons({ setCity }) {
   const cities = [
     {
       id: 1,
@@ -30,6 +30,7 @@ function TopButtons() {
         <button
           key={city.id}
           className="text-white w-32 text-lg font-medium transition ease-out hover:scale-110"
+          onClick={() => setCity(city.title)}
         >
           {city.title}
         </button>

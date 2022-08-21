@@ -9,7 +9,7 @@ import getAllWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [city] = useState("ankara");
+  const [city, setCity] = useState("ankara");
   const [units] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="py-5 px-32 min-h-screen max-h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="mx-auto max-w-screen-md pt">
-        <TopButtons />
+        <TopButtons setCity={setCity} />
         <Inputs />
 
         {weather && (
