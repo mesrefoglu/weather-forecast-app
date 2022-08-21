@@ -9,14 +9,14 @@ import getAllWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [city, setCity] = useState("ankara");
+  const [query, setQuery] = useState({ q: "Toronto" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
       await getAllWeatherData({
-        q: city,
+        ...query,
         units: units,
         cnt: 7,
       }).then((data) => {
@@ -25,13 +25,13 @@ function App() {
     };
 
     fetchWeather();
-  }, [city, units]);
+  }, [query, units]);
 
   return (
     <div className="py-5 px-32 min-h-screen max-h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="mx-auto max-w-screen-md pt">
-        <TopButtons setCity={setCity} />
-        <Inputs setCity={setCity} units={units} setUnits={setUnits} />
+        <TopButtons setQuery={setQuery} />
+        <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
         {weather && (
           <div>
