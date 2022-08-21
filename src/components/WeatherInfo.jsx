@@ -1,6 +1,5 @@
 import React from "react";
-import { DateTime } from "luxon";
-import { iconUrlFromCode } from "../services/weatherService";
+import { getDateTime, iconUrlFromCode } from "../services/weatherService";
 import {
   UilTemperature,
   UilTemperatureHalf,
@@ -21,6 +20,7 @@ function WeatherInfo({
     wind,
     sunrise,
     sunset,
+    timezone,
     temp_max,
     temp_min,
   },
@@ -62,7 +62,7 @@ function WeatherInfo({
             <p className="font-light">
               Rise:{" "}
               <span className="font-medium ml-1">
-                {DateTime.fromSeconds(sunrise).toFormat("hh:mm a")}
+                {getDateTime(sunrise, timezone)}
               </span>
             </p>
           </div>
@@ -71,7 +71,7 @@ function WeatherInfo({
             <p className="font-light">
               Set:{" "}
               <span className="font-medium ml-1">
-                {DateTime.fromSeconds(sunset).toFormat("hh:mm a")}
+                {getDateTime(sunset, timezone)}
               </span>
             </p>
           </div>

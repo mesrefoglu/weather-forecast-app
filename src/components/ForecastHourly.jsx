@@ -1,8 +1,8 @@
 import React from "react";
 import { DateTime } from "luxon";
-import { iconUrlFromCode } from "../services/weatherService";
+import { getDateTime, iconUrlFromCode } from "../services/weatherService";
 
-function ForecastHourly({ weather: { hourly } }) {
+function ForecastHourly({ weather: { hourly, timezone } }) {
   return (
     <div>
       <div className="flex items-center justify-start mt-10">
@@ -16,7 +16,7 @@ function ForecastHourly({ weather: { hourly } }) {
             className="flex flex-col items-center justify-center"
           >
             <p className="font-light text-sm">
-              {DateTime.fromSeconds(hour.dt).toFormat("hh:mm a")}
+              {getDateTime(hour.dt, timezone)}
             </p>
             <img
               src={iconUrlFromCode(hour.icon)}

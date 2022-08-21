@@ -1,7 +1,8 @@
 import React from "react";
-import { getDate, getTime } from "../services/weatherService";
+import { DateTime } from "luxon";
+import { getDateTime } from "../services/weatherService";
 
-function LocationAndTime({ weather: { timezone, city, country } }) {
+function LocationAndTime({ weather: { dt, timezone, city, country } }) {
   return (
     <div>
       <div className="flex items-center justify-center my-6">
@@ -11,10 +12,14 @@ function LocationAndTime({ weather: { timezone, city, country } }) {
       </div>
       <div className="flex flex-row items-center justify-center my-6">
         <p className="text-white text-xl font-extralight mx-3">
-          {getDate(timezone)}
+          {getDateTime(
+            DateTime.utc().toSeconds(),
+            timezone,
+            "cccc, d LLLL yyyy"
+          )}
         </p>
         <p className="text-white text-xl font-extralight mx-3">
-          {getTime(timezone)}
+          {getDateTime(DateTime.utc().toSeconds(), timezone)}
         </p>
       </div>
     </div>

@@ -1,8 +1,7 @@
 import React from "react";
-import { DateTime } from "luxon";
-import { iconUrlFromCode } from "../services/weatherService";
+import { getDateTime, iconUrlFromCode } from "../services/weatherService";
 
-function ForecastDaily({ hourly }) {
+function ForecastDaily({ weather: { daily, timezone } }) {
   return (
     <div>
       <div className="flex items-center justify-start mt-10">
@@ -10,69 +9,20 @@ function ForecastDaily({ hourly }) {
       </div>
       <hr className="my-4" />
       <div className="flex flex-row items-center justify-between text-white">
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">5:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">6:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">7:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">8:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">9:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">9:00 PM</p>
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            className="w-12 my-1"
-            alt=""
-          />
-          <p className="font-medium">20&deg;</p>
-        </div>
+        {daily.map((day) => (
+          <div
+            key={day.dt}
+            className="flex flex-col items-center justify-center"
+          >
+            <p className="font-light text-sm">
+              {getDateTime(day.dt, timezone, "cccc")}
+            </p>
+            <img src={iconUrlFromCode(day.icon)} className="w-12 my-1" alt="" />
+            <p className="font-medium">
+              {day.temp_min.toFixed()}&deg; / {day.temp_max.toFixed()}&deg;
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

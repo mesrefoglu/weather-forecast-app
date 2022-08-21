@@ -19,6 +19,7 @@ const getAllWeatherData = async (searchParams) => {
   const allData = {
     country: currentData.sys.country,
     city: currentData.name,
+    dt: currentData.dt,
     timezone: currentData.timezone,
     currentWeather: {
       main: currentData.weather[0].main,
@@ -31,6 +32,7 @@ const getAllWeatherData = async (searchParams) => {
       temp_max: currentData.main.temp_max,
       sunrise: currentData.sys.sunrise,
       sunset: currentData.sys.sunset,
+      timezone: currentData.timezone,
     },
     hourly: hourlyData.list.map((hour) => ({
       dt: hour.dt,
@@ -48,18 +50,14 @@ const getAllWeatherData = async (searchParams) => {
   return allData;
 };
 
-const getDate = (timezone) =>
-  DateTime.fromSeconds(DateTime.utc().toSeconds() + timezone, {
+const getDateTime = (dt, timezone, format = "hh:mm a") =>
+  DateTime.fromSeconds(dt + timezone, {
     zone: "utc",
-  }).toFormat("cccc, d LLLL yyyy");
-const getTime = (timezone) =>
-  DateTime.fromSeconds(DateTime.utc().toSeconds() + timezone, {
-    zone: "utc",
-  }).toFormat("hh:mm a");
+  }).toFormat(format);
 
 const iconUrlFromCode = (code) =>
   `https://openweathermap.org/img/wn/${code}@2x.png`;
 
 export default getAllWeatherData;
 
-export { getDate, getTime, iconUrlFromCode };
+export { getDateTime, iconUrlFromCode };
