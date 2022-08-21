@@ -22,9 +22,13 @@ function Inputs({ setQuery, units, setUnits }) {
     }
   };
 
+  const handleUnitChange = () => {
+    setUnits(units === "imperial" ? "metric" : "imperial");
+  };
+
   return (
-    <div className="flex flex-row justify-center pt-2 my-3">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
+    <div className="flex flex-row justify-around pt-2 my-3">
+      <div className="flex flex-row w-2/3 items-center justify-center space-x-4">
         <input
           value={textbox}
           onChange={(e) => setTextbox(e.currentTarget.value)}
@@ -40,13 +44,28 @@ function Inputs({ setQuery, units, setUnits }) {
         />
       </div>
 
-      <div className="flex flex-row items-center justify-center ml-8">
-        <button className="flex flex-row items-center justify-center transition ease-out hover:scale-125">
-          <div name="metric" className="text-xl text-white font-light">
+      <div className="flex flex-row items-center w-20 justify-center ml-8">
+        <button
+          onClick={handleUnitChange}
+          className="flex flex-row items-center justify-center"
+        >
+          <div
+            name="metric"
+            className={
+              "text-xl text-white " +
+              (units === "metric" ? "font-bold" : "font-light")
+            }
+          >
             &deg;C
           </div>
-          <p className="text-xl text-white mx-3">/</p>
-          <div name="imperial" className="text-xl text-white font-light">
+          <p className="text-xl text-white mx-3">{" / "}</p>
+          <div
+            name="imperial"
+            className={
+              "text-xl text-white " +
+              (units === "metric" ? "font-light" : "font-bold")
+            }
+          >
             &deg;F
           </div>
         </button>
