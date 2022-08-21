@@ -1,4 +1,6 @@
 import React from "react";
+import { DateTime } from "luxon";
+import { iconUrlFromCode } from "../services/weatherService";
 import {
   UilTemperature,
   UilTemperatureHalf,
@@ -9,35 +11,46 @@ import {
   UilSunset,
 } from "@iconscout/react-unicons";
 
-function WeatherInfo() {
+function WeatherInfo({
+  weather: {
+    icon,
+    main,
+    temp,
+    feels_like,
+    humidity,
+    wind,
+    sunrise,
+    sunset,
+    temp_max,
+    temp_min,
+  },
+}) {
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>Sunny</p>
+        <p>{main}</p>
       </div>
       <div className="flex items-center justify-center">
         <div className="flex flex-row items-center justify-between w-11/12 text-white py-3">
-          <img
-            src="https://img.icons8.com/color/48/000000/sun.png"
-            alt="sun"
-            className="w-20 mx-9"
-          />
-          <p className="text-5xl">20&deg;</p>
+          <img src={iconUrlFromCode(icon)} alt="sun" className="w-20 mx-9" />
+          <p className="text-5xl">{temp.toFixed()}&deg;</p>
           <div className="flex flex-col space-y-2 w-36">
             <div className="flex font-light text-sm items-center justify-center">
               <UilTemperatureHalf size={18} className="mr-1" />
               Feels like:
-              <span className="font-medium ml-1">20&deg;</span>
+              <span className="font-medium ml-1">
+                {feels_like.toFixed()}&deg;
+              </span>
             </div>
             <div className="flex font-light text-sm items-center justify-center">
               <UilTear size={18} className="mr-1" />
               Humidity:
-              <span className="font-medium ml-1">100%</span>
+              <span className="font-medium ml-1">{humidity.toFixed()}%</span>
             </div>
             <div className="flex font-light text-sm items-center justify-center">
               <UilWind size={18} className="mr-1" />
               Wind:
-              <span className="font-medium ml-1">11 km/h</span>
+              <span className="font-medium ml-1">{wind.toFixed()} km/h</span>
             </div>
           </div>
         </div>
@@ -47,25 +60,37 @@ function WeatherInfo() {
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilSun />
             <p className="font-light">
-              Rise: <span className="font-medium ml-1">06:45 AM</span>
+              Rise:{" "}
+              <span className="font-medium ml-1">
+                {DateTime.fromSeconds(sunrise).toFormat("hh:mm a")}
+              </span>
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilSunset />
             <p className="font-light">
-              Set: <span className="font-medium ml-1">08:45 PM</span>
+              Set:{" "}
+              <span className="font-medium ml-1">
+                {DateTime.fromSeconds(sunset).toFormat("hh:mm a")}
+              </span>
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilTemperature />
             <p className="font-light">
-              High: <span className="font-medium ml-1">30&deg;</span>
+              High:{" "}
+              <span className="font-medium ml-1">
+                {temp_max.toFixed()}&deg;
+              </span>
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
             <UilTemperatureEmpty />
             <p className="font-light">
-              Low: <span className="font-medium ml-1">10&deg;</span>
+              Low:{" "}
+              <span className="font-medium ml-1">
+                {temp_min.toFixed()}&deg;
+              </span>
             </p>
           </div>
         </div>
