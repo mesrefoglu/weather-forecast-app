@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 const config = require("./config.json");
 const key = config.key;
 const BASE_URL = "https://pro.openweathermap.org/data/2.5/";
@@ -32,13 +34,11 @@ const getAllWeatherData = async (searchParams) => {
     },
     hourly: hourlyData.list.map((hour) => ({
       dt: hour.dt,
-      main: hour.weather[0].main,
       icon: hour.weather[0].icon,
       temp: hour.main.temp,
     })),
     daily: dailyData.list.map((day) => ({
       dt: day.dt,
-      main: day.weather[0].main,
       icon: day.weather[0].icon,
       temp_max: day.temp.max,
       temp_min: day.temp.min,
@@ -48,4 +48,18 @@ const getAllWeatherData = async (searchParams) => {
   return allData;
 };
 
+const getDate = (timezone) =>
+  DateTime.fromSeconds(DateTime.utc().toSeconds() + timezone, {
+    zone: "utc",
+  }).toFormat("cccc, d LLLL yyyy");
+const getTime = (timezone) =>
+  DateTime.fromSeconds(DateTime.utc().toSeconds() + timezone, {
+    zone: "utc",
+  }).toFormat("hh:mm a");
+
+const iconUrlFromCode = (code) =>
+  `https://openweathermap.org/img/wn/${code}@2x.png`;
+
 export default getAllWeatherData;
+
+export { getDate, getTime, iconUrlFromCode };

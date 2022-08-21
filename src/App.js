@@ -5,28 +5,41 @@ import LocationAndTime from "./components/LocationAndTime";
 import WeatherInfo from "./components/WeatherInfo";
 import Forecast from "./components/Forecast";
 import getAllWeatherData from "./services/weatherService";
+import { useEffect, useState } from "react";
 
 function App() {
-  const fetchWeather = async (city, units) => {
-    const data = await getAllWeatherData({
-      q: city,
-      units: units,
-      cnt: 7,
-    });
-    console.log(data);
-  };
+  const [city] = useState("berlin");
+  const [units] = useState("metric");
+  const [weather, setWeather] = useState(null);
 
-  fetchWeather("toronto", "metric");
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getAllWeatherData({
+        q: city,
+        units: units,
+        cnt: 7,
+      }).then((data) => {
+        setWeather(data);
+      });
+    };
+
+    fetchWeather();
+  }, [city, units]);
 
   return (
     <div className="py-5 px-32 min-h-screen max-h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="mx-auto max-w-screen-md pt">
         <TopButtons />
         <Inputs />
-        <LocationAndTime />
-        <WeatherInfo />
-        <Forecast title="hourly forecast" />
-        <Forecast title="daily forecast" />
+
+        {weather && (
+          <div>
+            <LocationAndTime weather={weather} />
+            <WeatherInfo weather={weather} />
+            <Forecast title="hourly forecast" weather={weather} />
+            <Forecast title="daily forecast" weather={weather} />
+          </div>
+        )}
       </div>
     </div>
   );
