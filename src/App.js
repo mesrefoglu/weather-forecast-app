@@ -3,7 +3,8 @@ import TopButtons from "./components/TopButtons";
 import Inputs from "./components/Inputs";
 import LocationAndTime from "./components/LocationAndTime";
 import WeatherInfo from "./components/WeatherInfo";
-import Forecast from "./components/Forecast";
+import ForecastHourly from "./components/ForecastHourly";
+import ForecastDaily from "./components/ForecastDaily";
 import getAllWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
 
@@ -35,9 +36,9 @@ function App() {
         {weather && (
           <div>
             <LocationAndTime weather={weather} />
-            <Forecast title="hourly forecast" weather={weather} />
-            <Forecast title="daily forecast" weather={weather} />
             <WeatherInfo weather={weather.currentWeather} />
+            <ForecastHourly weather={weather.hourly} />
+            <ForecastDaily weather={weather.daily} />
           </div>
         )}
       </div>

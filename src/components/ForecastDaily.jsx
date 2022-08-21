@@ -1,10 +1,10 @@
 import React from "react";
 
-function Forecast({ title }) {
+function ForecastDaily() {
   return (
     <div>
       <div className="flex items-center justify-start mt-10">
-        <p className="text-white font-medium uppercase">{title}</p>
+        <p className="text-white font-medium">DAILY FORECAST</p>
       </div>
       <hr className="my-4" />
       <div className="flex flex-row items-center justify-between text-white">
@@ -76,4 +76,4 @@ function Forecast({ title }) {
   );
 }
 
-export default Forecast;
+export default ForecastDaily;
