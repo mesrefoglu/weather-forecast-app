@@ -19,7 +19,7 @@ function ForecastDaily({ weather: { daily, timezone } }) {
             </p>
             <img src={iconUrlFromCode(day.icon)} className="w-12 my-1" alt="" />
             <p className="font-medium">
-              {day.temp_min.toFixed()}&deg; / {day.temp_max.toFixed()}&deg;
+              {day.temp_min.toFixed()}&deg; - {day.temp_max.toFixed()}&deg;
             </p>
           </div>
         ))}

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [city, setCity] = useState("ankara");
-  const [units] = useState("metric");
+  const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
     <div className="py-5 px-32 min-h-screen max-h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="mx-auto max-w-screen-md pt">
         <TopButtons setCity={setCity} />
-        <Inputs />
+        <Inputs setCity={setCity} units={units} setUnits={setUnits} />
 
         {weather && (
           <div>

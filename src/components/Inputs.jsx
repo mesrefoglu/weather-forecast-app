@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { UilMapMarkerAlt } from "@iconscout/react-unicons";
 
-function Inputs() {
+function Inputs({ setCity, units, setUnits }) {
+  const [query, setQuery] = useState("");
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setCity(query);
+      setQuery("");
+    }
+  };
+
   return (
     <div className="flex flex-row justify-center pt-2 my-3">
       <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
         <input
+          value={query}
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          onKeyUp={handleKeyPress.bind(this)}
           type="text"
           placeholder="enter a city name..."
           className="text-xl font-light p-2 w-full shadow-xl focus:outline-none"
