@@ -12,14 +12,14 @@ function ForecastDaily({ weather: { daily, timezone } }) {
         {daily.map((day) => (
           <div
             key={day.dt}
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center w-24"
           >
             <p className="font-light text-sm">
               {getDateTime(day.dt, timezone, "cccc")}
             </p>
             <img src={iconUrlFromCode(day.icon)} className="w-12 my-1" alt="" />
             <p className="font-medium">
-              {day.temp_min.toFixed()}&deg; - {day.temp_max.toFixed()}&deg;
+              {day.temp_min.toFixed()}&deg; | {day.temp_max.toFixed()}&deg;
             </p>
           </div>
         ))}

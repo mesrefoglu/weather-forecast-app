@@ -12,7 +12,7 @@ function ForecastHourly({ weather: { hourly, timezone } }) {
         {hourly.map((hour) => (
           <div
             key={hour.dt}
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center w-24"
           >
             <p className="font-light text-sm">
               {getDateTime(hour.dt, timezone)}
