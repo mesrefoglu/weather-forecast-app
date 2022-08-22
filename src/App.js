@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import TopButtons from "./components/TopButtons";
 import Inputs from "./components/Inputs";
 import LocationAndTime from "./components/LocationAndTime";
@@ -5,7 +6,8 @@ import WeatherInfo from "./components/WeatherInfo";
 import ForecastHourly from "./components/ForecastHourly";
 import ForecastDaily from "./components/ForecastDaily";
 import getAllWeatherData from "./services/weatherService";
-import { useEffect, useState } from "react";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [query, setQuery] = useState({ q: "Toronto" });
@@ -14,13 +16,31 @@ function App() {
 
   useEffect(() => {
     const fetchWeather = async () => {
-      await getAllWeatherData({
-        ...query,
-        units: units,
-        cnt: 7,
-      }).then((data) => {
-        setWeather(data);
-      });
+      const message = query.q ? query.q : "current location";
+
+      const id = toast.loading(`Fetching weather for ${message}...`);
+      try {
+        await getAllWeatherData({
+          ...query,
+          units: units,
+          cnt: 7,
+        }).then((data) => {
+          toast.update(id, {
+            render: `Weather for ${data.city}, ${data.country} fetched successfully!`,
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+          setWeather(data);
+        });
+      } catch (error) {
+        toast.update(id, {
+          render: `Error fetching weather for ${message}!`,
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
+      }
     };
 
     fetchWeather();
@@ -40,6 +60,13 @@ function App() {
             <ForecastDaily weather={weather} />
           </div>
         )}
+
+        <ToastContainer
+          hideProgressBar={true}
+          closeOnClick={false}
+          pauseOnHover={false}
+          transition={Flip}
+        />
       </div>
     </div>
   );

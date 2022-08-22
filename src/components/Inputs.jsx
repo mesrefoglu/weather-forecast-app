@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { UilMapMarkerAlt } from "@iconscout/react-unicons";
 
 function Inputs({ setQuery, units, setUnits }) {
@@ -13,12 +14,28 @@ function Inputs({ setQuery, units, setUnits }) {
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-
-        setQuery({ lat: lat, lon: lon });
-      });
+      const id = toast.loading("Getting your location...");
+      try {
+        navigator.geolocation.getCurrentPosition((position) => {
+          setQuery({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
+          toast.update(id, {
+            render: `Got your location successfully!`,
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+        });
+      } catch (error) {
+        toast.update(id, {
+          render: `Could not get your location!`,
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
+      }
     }
   };
 

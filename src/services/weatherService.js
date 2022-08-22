@@ -17,8 +17,8 @@ const getAllWeatherData = async (searchParams) => {
   const dailyData = await getWeatherData("forecast/daily", searchParams);
 
   const allData = {
-    country: currentData.sys.country,
     city: currentData.name,
+    country: currentData.sys.country,
     dt: currentData.dt,
     timezone: currentData.timezone,
     currentWeather: {
