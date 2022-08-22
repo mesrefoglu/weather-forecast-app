@@ -65,6 +65,7 @@ function App() {
           hideProgressBar={true}
           closeOnClick={false}
           pauseOnHover={false}
+          pauseOnFocusLoss={false}
           transition={Flip}
         />
       </div>
