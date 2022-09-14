@@ -22,7 +22,7 @@ function Inputs({ setQuery, units, setUnits }) {
             lon: position.coords.longitude,
           });
           toast.update(id, {
-            render: `Got your location successfully!`,
+            render: "Got your location successfully!",
             type: "success",
             isLoading: false,
             autoClose: 3000,
@@ -30,7 +30,7 @@ function Inputs({ setQuery, units, setUnits }) {
         });
       } catch (error) {
         toast.update(id, {
-          render: `Could not get your location!`,
+          render: "Could not get your location!",
           type: "error",
           isLoading: false,
           autoClose: 3000,

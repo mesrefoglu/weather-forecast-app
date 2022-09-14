@@ -2,12 +2,14 @@ import React from "react";
 import { DateTime } from "luxon";
 import { getDateTime } from "../services/weatherService";
 
-function LocationAndTime({ weather: { dt, timezone, city, country } }) {
+const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+
+function LocationAndTime({ weather: { timezone, city, country } }) {
   return (
     <div>
       <div className="flex items-center justify-center my-6">
         <p className="text-white text-3xl font-medium">
-          {city}, {country}
+          {city}, {regionNames.of(country)}
         </p>
       </div>
       <div className="flex flex-row items-center justify-center my-2">
@@ -27,3 +29,5 @@ function LocationAndTime({ weather: { dt, timezone, city, country } }) {
 }
 
 export default LocationAndTime;
+
+export { regionNames };

@@ -7,6 +7,7 @@ import ForecastHourly from "./components/ForecastHourly";
 import ForecastDaily from "./components/ForecastDaily";
 import getAllWeatherData from "./services/weatherService";
 import { ToastContainer, toast, Flip } from "react-toastify";
+import { regionNames } from "./components/LocationAndTime";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
           cnt: 7,
         }).then((data) => {
           toast.update(id, {
-            render: `Weather for ${data.city}, ${data.country} fetched successfully!`,
+            render: `Weather for ${data.city}, ${regionNames.of(
+              data.country
+            )} fetched successfully!`,
             type: "success",
             isLoading: false,
             autoClose: 3000,
