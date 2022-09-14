@@ -32,7 +32,7 @@ function App() {
             )} fetched successfully!`,
             type: "success",
             isLoading: false,
-            autoClose: 3000,
+            autoClose: 2000,
           });
           setWeather(data);
         });
@@ -41,7 +41,7 @@ function App() {
           render: `Error fetching weather for ${message}!`,
           type: "error",
           isLoading: false,
-          autoClose: 3000,
+          autoClose: 2000,
         });
       }
     };
@@ -66,7 +66,6 @@ function App() {
 
         <ToastContainer
           hideProgressBar={true}
-          closeOnClick={false}
           pauseOnHover={false}
           pauseOnFocusLoss={false}
           transition={Flip}

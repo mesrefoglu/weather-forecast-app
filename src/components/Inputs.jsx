@@ -25,7 +25,7 @@ function Inputs({ setQuery, units, setUnits }) {
             render: "Got your location successfully!",
             type: "success",
             isLoading: false,
-            autoClose: 3000,
+            autoClose: 2000,
           });
         });
       } catch (error) {
@@ -33,7 +33,7 @@ function Inputs({ setQuery, units, setUnits }) {
           render: "Could not get your location!",
           type: "error",
           isLoading: false,
-          autoClose: 3000,
+          autoClose: 2000,
         });
       }
     }
