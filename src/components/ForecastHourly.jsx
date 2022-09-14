@@ -9,7 +9,7 @@ function ForecastHourly({ weather: { hourly, timezone } }) {
       </div>
       <hr className="my-4" />
       <div className="flex flex-row items-center justify-between text-white">
-        {hourly.map((hour) => (
+        {hourly.slice(0, hourly.length - 1).map((hour) => (
           <div
             key={hour.dt}
             className="flex flex-col items-center justify-center w-24"

@@ -24,7 +24,7 @@ function App() {
         await getAllWeatherData({
           ...query,
           units: units,
-          cnt: 7,
+          cnt: 8,
         }).then((data) => {
           toast.update(id, {
             render: `Weather for ${data.city}, ${regionNames.of(

@@ -78,20 +78,20 @@ function WeatherInfo({
             </p>
           </div>
           <div className="flex flex-row items-center space-x-2 justify-center">
-            <UilTemperature />
-            <p className="font-light">
-              High:{" "}
-              <span className="font-medium ml-1">
-                {temp_max.toFixed()}&deg;
-              </span>
-            </p>
-          </div>
-          <div className="flex flex-row items-center space-x-2 justify-center">
             <UilTemperatureEmpty />
             <p className="font-light">
               Low:{" "}
               <span className="font-medium ml-1">
                 {temp_min.toFixed()}&deg;
+              </span>
+            </p>
+          </div>
+          <div className="flex flex-row items-center space-x-2 justify-center">
+            <UilTemperature />
+            <p className="font-light">
+              High:{" "}
+              <span className="font-medium ml-1">
+                {temp_max.toFixed()}&deg;
               </span>
             </p>
           </div>

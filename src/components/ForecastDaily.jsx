@@ -9,7 +9,7 @@ function ForecastDaily({ weather: { daily, timezone } }) {
       </div>
       <hr className="my-4" />
       <div className="flex flex-row items-center justify-between text-white">
-        {daily.map((day) => (
+        {daily.slice(1).map((day) => (
           <div
             key={day.dt}
             className="flex flex-col items-center justify-center w-24"
