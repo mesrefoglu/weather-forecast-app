@@ -1,4 +1,4 @@
-# Weather Forecast App using React and Openweathermap API
+# Weather Forecast App
 
 ## Overview
 
