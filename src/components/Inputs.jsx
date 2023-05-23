@@ -51,7 +51,7 @@ function Inputs({ setQuery, units, setUnits }) {
           onChange={(e) => setTextbox(e.currentTarget.value)}
           onKeyUp={handleKeyPress.bind(this)}
           type="text"
-          placeholder="enter a city name..."
+          placeholder="enter 'City' or 'City, Country'..."
           className="text-xl font-light p-2 w-full shadow-xl focus:outline-none"
         />
         <UilMapMarkerAlt
